@@ -209,6 +209,10 @@
                     <connections>
                         <outlet property="addTransactionButton" destination="AZr-Yk-zSk" id="SFh-zY-4rS"/>
                         <outlet property="addTransactionView" destination="KLt-0n-hnH" id="CMZ-lz-430"/>
+                        <outlet property="amountTextField" destination="Xxz-im-Tbo" id="LlA-aU-PeV"/>
+                        <outlet property="categoryTextField" destination="qMP-9S-hhe" id="hZS-GG-3Yc"/>
+                        <outlet property="dateTextField" destination="UKY-6F-91D" id="y9t-Yp-fN2"/>
+                        <outlet property="notesTextField" destination="UKf-Qp-5ZV" id="M3z-YM-m2B"/>
                         <outlet property="transactionCollectionView" destination="trK-30-3re" id="LXR-rd-yIJ"/>
                     </connections>
                 </viewController>
@@ -222,6 +226,9 @@
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="datePicker:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="BBJ-xm-nW1"/>
+                            </connections>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xxz-im-Tbo">
                             <rect key="frame" x="10" y="150" width="312" height="30"/>
@@ -344,33 +351,50 @@
             </objects>
             <point key="canvasLocation" x="975.20000000000005" y="17.733990147783253"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Category Table View Controller-->
         <scene sceneID="Eaq-up-s22">
             <objects>
-                <tableViewController id="cEK-94-0Er" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BvL-ep-BNs">
+                <tableViewController storyboardIdentifier="MMCategoryTableViewController" id="cEK-94-0Er" customClass="MMCategoryTableViewController" customModule="MoneyMonitor" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BvL-ep-BNs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" editingAccessoryType="disclosureIndicator" textLabel="bG2-SH-XSf" imageView="zAC-PD-Mkf" style="IBUITableViewCellStyleDefault" id="3Xy-3D-08W">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" editingAccessoryType="disclosureIndicator" textLabel="bG2-SH-XSf" imageView="zAC-PD-Mkf" style="IBUITableViewCellStyleDefault" id="3Xy-3D-08W">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Xy-3D-08W" id="s9m-I7-bLF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bG2-SH-XSf">
-                                            <rect key="frame" x="75" y="0.0" width="284" height="43.666666666666664"/>
+                                            <rect key="frame" x="75" y="0.0" width="284" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="MenuImage" id="zAC-PD-Mkf">
-                                            <rect key="frame" x="16" y="0.0" width="44" height="43.666666666666664"/>
+                                            <rect key="frame" x="16" y="0.0" width="44" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderView" editingAccessoryType="disclosureIndicator" textLabel="whG-TF-RAw" style="IBUITableViewCellStyleDefault" id="5pr-Nl-LhO" customClass="MMCategoryHeaderViewCell" customModule="MoneyMonitor" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5pr-Nl-LhO" id="FOg-mM-Ado">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Select Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="whG-TF-RAw">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>

@@ -16,6 +16,9 @@
 		BF340F1F239A6F8400716186 /* MMSideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF340F1E239A6F8400716186 /* MMSideMenuTableViewController.swift */; };
 		BF340F23239A827F00716186 /* MMTansactionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF340F22239A827F00716186 /* MMTansactionCollectionViewCell.swift */; };
 		BF9896A9239CC36E005D7FFD /* MMHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9896A8239CC36E005D7FFD /* MMHomeViewModel.swift */; };
+		BF9896AB239E538E005D7FFD /* MMCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9896AA239E538E005D7FFD /* MMCategoryModel.swift */; };
+		BF9896AF239E56C8005D7FFD /* MMCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9896AE239E56C8005D7FFD /* MMCategoryTableViewController.swift */; };
+		BF9896B1239E5EA4005D7FFD /* MMCategoryHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9896B0239E5EA4005D7FFD /* MMCategoryHeaderViewCell.swift */; };
 		BFD1BA57239BE99700072ACA /* MMTransactionCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD1BA56239BE99700072ACA /* MMTransactionCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +35,9 @@
 		BF340F21239A6F9E00716186 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		BF340F22239A827F00716186 /* MMTansactionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMTansactionCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF9896A8239CC36E005D7FFD /* MMHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMHomeViewModel.swift; sourceTree = "<group>"; };
+		BF9896AA239E538E005D7FFD /* MMCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMCategoryModel.swift; sourceTree = "<group>"; };
+		BF9896AE239E56C8005D7FFD /* MMCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMCategoryTableViewController.swift; sourceTree = "<group>"; };
+		BF9896B0239E5EA4005D7FFD /* MMCategoryHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMCategoryHeaderViewCell.swift; sourceTree = "<group>"; };
 		BFD1BA56239BE99700072ACA /* MMTransactionCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMTransactionCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,8 +73,8 @@
 			children = (
 				BF340F09239A6D3B00716186 /* AppDelegate.swift */,
 				BF340F1E239A6F8400716186 /* MMSideMenuTableViewController.swift */,
-				BF340F0B239A6D3B00716186 /* MMHomeViewController.swift */,
-				BF9896A8239CC36E005D7FFD /* MMHomeViewModel.swift */,
+				BF9896AC239E5634005D7FFD /* Home */,
+				BF9896AD239E5640005D7FFD /* Category */,
 				BFD1BA56239BE99700072ACA /* MMTransactionCollectionReusableView.swift */,
 				BF340F22239A827F00716186 /* MMTansactionCollectionViewCell.swift */,
 				BF340F0D239A6D3B00716186 /* Main.storyboard */,
@@ -78,6 +84,25 @@
 				BF340F10239A6D3B00716186 /* MoneyMonitor.xcdatamodeld */,
 			);
 			path = MoneyMonitor;
+			sourceTree = "<group>";
+		};
+		BF9896AC239E5634005D7FFD /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BF340F0B239A6D3B00716186 /* MMHomeViewController.swift */,
+				BF9896A8239CC36E005D7FFD /* MMHomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BF9896AD239E5640005D7FFD /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				BF9896AA239E538E005D7FFD /* MMCategoryModel.swift */,
+				BF9896AE239E56C8005D7FFD /* MMCategoryTableViewController.swift */,
+				BF9896B0239E5EA4005D7FFD /* MMCategoryHeaderViewCell.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,10 +178,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF340F0C239A6D3B00716186 /* MMHomeViewController.swift in Sources */,
+				BF9896AB239E538E005D7FFD /* MMCategoryModel.swift in Sources */,
 				BF9896A9239CC36E005D7FFD /* MMHomeViewModel.swift in Sources */,
+				BF9896AF239E56C8005D7FFD /* MMCategoryTableViewController.swift in Sources */,
 				BF340F1F239A6F8400716186 /* MMSideMenuTableViewController.swift in Sources */,
 				BF340F23239A827F00716186 /* MMTansactionCollectionViewCell.swift in Sources */,
 				BF340F12239A6D3B00716186 /* MoneyMonitor.xcdatamodeld in Sources */,
+				BF9896B1239E5EA4005D7FFD /* MMCategoryHeaderViewCell.swift in Sources */,
 				BFD1BA57239BE99700072ACA /* MMTransactionCollectionReusableView.swift in Sources */,
 				BF340F0A239A6D3B00716186 /* AppDelegate.swift in Sources */,
 			);

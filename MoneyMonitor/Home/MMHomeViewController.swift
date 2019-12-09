@@ -15,11 +15,20 @@ class MMHomeViewController: UIViewController,UICollectionViewDelegate,UICollecti
     var lastVelocityYSign = 0
     var homeViewModel = MMHomeViewModel()
     @IBOutlet var addTransactionView: UIView!
+    @IBOutlet weak var dateTextField: UITextField!
+    
+    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var categoryTextField: UITextField!
+    
+    @IBOutlet weak var notesTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        dateTextField.text = getCurrentDate()
+        dateTextField.addTarget(self, action: #selector(datePicker(_:)), for: .allTouchEvents)
+        categoryTextField.addTarget(self, action: #selector(showCategoryList), for: .allTouchEvents)
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -104,6 +113,40 @@ class MMHomeViewController: UIViewController,UICollectionViewDelegate,UICollecti
         self.transactionCollectionView.backgroundColor = UIColor.clear
         
         addTransactionView.removeFromSuperview()
+    }
+    
+    @IBAction func datePicker(_ sender: UITextField) {
+        let datePickerView = UIDatePicker()
+        datePickerView.datePickerMode = .date
+        sender.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
+    }
+    
+    @objc func handleDatePicker(sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        dateTextField.text = dateFormatter.string(from: sender.date)
+    }
+    
+    func getCurrentDate()-> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        let dateString = dateFormatter.string(from:Date())
+        print(dateString)
+        return dateString
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        dateTextField = textField
+        datePicker(textField)
+
+    }
+    
+    @objc func showCategoryList(){
+        let vc = MMCategoryTableViewController()
+        vc.modalPresentationStyle = .popover
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
     }
     
 }
