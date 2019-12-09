@@ -28,7 +28,7 @@ class MMHomeViewController: UIViewController,UICollectionViewDelegate,UICollecti
         dateTextField.text = getCurrentDate()
         dateTextField.addTarget(self, action: #selector(datePicker(_:)), for: .allTouchEvents)
         categoryTextField.addTarget(self, action: #selector(showCategoryList), for: .allTouchEvents)
-
+         amountTextField.addTarget(self, action: #selector(showNumberPad), for: .allTouchEvents)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -144,10 +144,21 @@ class MMHomeViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     @objc func showCategoryList(){
         let vc = MMCategoryTableViewController()
-        vc.modalPresentationStyle = .popover
+        vc.categoryDelegate = self
+        vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
         present(vc, animated: true, completion: nil)
     }
     
+    @objc func showNumberPad(){
+        amountTextField.keyboardType = .numberPad
+    }
 }
-
+extension MMHomeViewController:MMCategoryTableViewControllerDelegate{
+    func sendCategory(name: String) {
+        categoryTextField.text = name
+    }
+    
+    
+    
+}
