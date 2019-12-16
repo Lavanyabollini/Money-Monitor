@@ -19,6 +19,8 @@
 		BF9896AB239E538E005D7FFD /* MMCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9896AA239E538E005D7FFD /* MMCategoryModel.swift */; };
 		BF9896AF239E56C8005D7FFD /* MMCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9896AE239E56C8005D7FFD /* MMCategoryTableViewController.swift */; };
 		BF9896B1239E5EA4005D7FFD /* MMCategoryHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9896B0239E5EA4005D7FFD /* MMCategoryHeaderViewCell.swift */; };
+		BFAD4466239F7F320022B694 /* MMTopTransactionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAD4465239F7F320022B694 /* MMTopTransactionCollectionViewCell.swift */; };
+		BFAD4468239F987B0022B694 /* MMTopTransactionDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAD4467239F987B0022B694 /* MMTopTransactionDetailsModel.swift */; };
 		BFD1BA57239BE99700072ACA /* MMTransactionCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD1BA56239BE99700072ACA /* MMTransactionCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		BF9896AA239E538E005D7FFD /* MMCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMCategoryModel.swift; sourceTree = "<group>"; };
 		BF9896AE239E56C8005D7FFD /* MMCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMCategoryTableViewController.swift; sourceTree = "<group>"; };
 		BF9896B0239E5EA4005D7FFD /* MMCategoryHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMCategoryHeaderViewCell.swift; sourceTree = "<group>"; };
+		BFAD4465239F7F320022B694 /* MMTopTransactionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMTopTransactionCollectionViewCell.swift; sourceTree = "<group>"; };
+		BFAD4467239F987B0022B694 /* MMTopTransactionDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMTopTransactionDetailsModel.swift; sourceTree = "<group>"; };
 		BFD1BA56239BE99700072ACA /* MMTransactionCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMTransactionCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +80,6 @@
 				BF9896AC239E5634005D7FFD /* Home */,
 				BF9896AD239E5640005D7FFD /* Category */,
 				BFD1BA56239BE99700072ACA /* MMTransactionCollectionReusableView.swift */,
-				BF340F22239A827F00716186 /* MMTansactionCollectionViewCell.swift */,
 				BF340F0D239A6D3B00716186 /* Main.storyboard */,
 				BF340F13239A6D3D00716186 /* Assets.xcassets */,
 				BF340F15239A6D3D00716186 /* LaunchScreen.storyboard */,
@@ -89,8 +92,11 @@
 		BF9896AC239E5634005D7FFD /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BFAD4465239F7F320022B694 /* MMTopTransactionCollectionViewCell.swift */,
 				BF340F0B239A6D3B00716186 /* MMHomeViewController.swift */,
+				BF340F22239A827F00716186 /* MMTansactionCollectionViewCell.swift */,
 				BF9896A8239CC36E005D7FFD /* MMHomeViewModel.swift */,
+				BFAD4467239F987B0022B694 /* MMTopTransactionDetailsModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -180,6 +186,7 @@
 				BF340F0C239A6D3B00716186 /* MMHomeViewController.swift in Sources */,
 				BF9896AB239E538E005D7FFD /* MMCategoryModel.swift in Sources */,
 				BF9896A9239CC36E005D7FFD /* MMHomeViewModel.swift in Sources */,
+				BFAD4466239F7F320022B694 /* MMTopTransactionCollectionViewCell.swift in Sources */,
 				BF9896AF239E56C8005D7FFD /* MMCategoryTableViewController.swift in Sources */,
 				BF340F1F239A6F8400716186 /* MMSideMenuTableViewController.swift in Sources */,
 				BF340F23239A827F00716186 /* MMTansactionCollectionViewCell.swift in Sources */,
@@ -187,6 +194,7 @@
 				BF9896B1239E5EA4005D7FFD /* MMCategoryHeaderViewCell.swift in Sources */,
 				BFD1BA57239BE99700072ACA /* MMTransactionCollectionReusableView.swift in Sources */,
 				BF340F0A239A6D3B00716186 /* AppDelegate.swift in Sources */,
+				BFAD4468239F987B0022B694 /* MMTopTransactionDetailsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

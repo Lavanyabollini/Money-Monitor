@@ -8,12 +8,13 @@
 
 import UIKit
 
-class MMHomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource{
+class MMHomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     @IBOutlet var transactionCollectionView: UICollectionView!
     @IBOutlet weak var addTransactionButton: UIButton!
     var lastVelocityYSign = 0
     var homeViewModel = MMHomeViewModel()
+    var toptransactionModel = MMTopTransactionDetailsModel()
     @IBOutlet var addTransactionView: UIView!
     @IBOutlet weak var dateTextField: UITextField!
     
@@ -21,6 +22,8 @@ class MMHomeViewController: UIViewController,UICollectionViewDelegate,UICollecti
     @IBOutlet weak var categoryTextField: UITextField!
     
     @IBOutlet weak var notesTextField: UITextField!
+    
+    @IBOutlet weak var topTransactionCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +35,18 @@ class MMHomeViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        topTransactionCollectionView.layer.shadowColor = UIColor.black.cgColor
+        topTransactionCollectionView.layer.shadowOpacity = 1
+        topTransactionCollectionView.layer.shadowOffset = .zero
+        topTransactionCollectionView.layer.shadowRadius = 3
+        topTransactionCollectionView.clipsToBounds = false
+        topTransactionCollectionView.layer.masksToBounds = false
     }
     
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+        if scrollView == transactionCollectionView{
         let currentVelocityY =  scrollView.panGestureRecognizer.velocity(in: scrollView.superview).y
         let currentVelocityYSign = Int(currentVelocityY).signum()
         if currentVelocityYSign != lastVelocityYSign &&
@@ -62,18 +71,38 @@ class MMHomeViewController: UIViewController,UICollectionViewDelegate,UICollecti
             print("SCOLLING UP")
         }
     }
+    }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return homeViewModel.configureNumberOfSections(collectionView:collectionView) 
+        if collectionView == topTransactionCollectionView{
+            return 1
+        }else{
+        return homeViewModel.configureNumberOfSections(collectionView:collectionView)
+        }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return homeViewModel.configureNumberOfItemsInSections(collectionView: collectionView, numberOfItemsInSection: section) 
+        if collectionView == topTransactionCollectionView{
+            return toptransactionModel.transactionNameList.count
+        }else{
+        return homeViewModel.configureNumberOfItemsInSections(collectionView: collectionView, numberOfItemsInSection: section)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == topTransactionCollectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopCell", for: indexPath)as! MMTopTransactionCollectionViewCell
+            cell.nameLabel.sizeToFit()
+            let keys = Array(toptransactionModel.transactionNameList.keys)
+            cell.nameLabel.text = keys[indexPath.row]
+            let values = Array(toptransactionModel.transactionNameList.values)
+            cell.amountLabel.text = String(values[indexPath.row])
+            cell.amountLabel.sizeToFit()
+            return cell
+        }
+        else{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)as! MMTansactionCollectionViewCell
         homeViewModel.configure(collectionViewCell:cell, indexPath:indexPath)
         return cell
-        
+        }
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -85,6 +114,18 @@ class MMHomeViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }
         return UICollectionReusableView()
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        if collectionView == topTransactionCollectionView{
+//        let label = UILabel(frame: CGRect.zero)
+//             let keys = Array(toptransactionModel.transactionNameList.keys)
+//        label.text = keys[indexPath.item]
+//        label.sizeToFit()
+//        return CGSize(width: label.frame.width, height: 32)
+//        }
+//        return CGSize(width: 0, height: 0)
+//        
+//    }
     
     @IBAction func addTransactionAction(_ sender: UIButton) {
         
