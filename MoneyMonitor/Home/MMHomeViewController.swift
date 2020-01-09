@@ -32,6 +32,10 @@ class MMHomeViewController: UIViewController,UICollectionViewDelegate,UICollecti
         dateTextField.addTarget(self, action: #selector(datePicker(_:)), for: .allTouchEvents)
         categoryTextField.addTarget(self, action: #selector(showCategoryList), for: .allTouchEvents)
          amountTextField.addTarget(self, action: #selector(showNumberPad), for: .allTouchEvents)
+        
+      addKeyboardObservers()
+        addTapGesture()
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,8 +47,35 @@ class MMHomeViewController: UIViewController,UICollectionViewDelegate,UICollecti
         topTransactionCollectionView.layer.masksToBounds = false
     }
     
+    func addKeyboardObservers(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+              NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
     
+    func addTapGesture(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+
+    }
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+   
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == transactionCollectionView{
         let currentVelocityY =  scrollView.panGestureRecognizer.velocity(in: scrollView.superview).y
@@ -184,6 +215,8 @@ class MMHomeViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     
     @objc func showCategoryList(){
+//        vc?.sourceRect = CGRect(x: 0, y: 0, width: self.view.layer.bounds.width * 0.5, height: self.view.layer.bounds.height * 0.5)
+//               vc?.sourceView = view
         let vc = MMCategoryTableViewController()
         vc.categoryDelegate = self
         vc.modalPresentationStyle = .overCurrentContext
@@ -199,7 +232,8 @@ extension MMHomeViewController:MMCategoryTableViewControllerDelegate{
     func sendCategory(name: String) {
         categoryTextField.text = name
     }
-    
-    
+}
+
+extension MMHomeViewController:UITextFieldDelegate{
     
 }
